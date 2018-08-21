@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import my.company.mockapp.dto.AddedPartDto;
@@ -41,6 +42,18 @@ public class Mock1ApiController {
         return addedPartDto;
     }
 
+	@RequestMapping(value = "/get_added_part_list", method = RequestMethod.GET, produces="application/json")
+	public List<AddedPartDto> getAddedPartList(@RequestParam(value="himokus[]") String[] himokus){
+
+		logger.info("Start /get_added_part_list");
+        for (String himoku : himokus) {
+            logger.info("params:"+ himoku);
+        }
+        
+        List<AddedPartDto> addedPartsList = service.getAddedPartList(himokus);
+        return addedPartsList;
+    }
+	
 	@RequestMapping(value = "/search_add_parts", method = RequestMethod.GET, produces="application/json")
     public List<AddedPartDto> searchAddParts(String bunrui, String koukei, String tani) {
         logger.info("Start /search_add_parts");

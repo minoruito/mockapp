@@ -61,13 +61,23 @@ public class Mock1Controller {
         
         model.addAttribute("form", form);
 
+        //増設・位置替え・撤去工事タブ
         PartsListSearchForm searchForm1 = new PartsListSearchForm();
         searchForm1.setBunruiList(masterService.findMasterData("A01"));
         searchForm1.setKoukeiList(masterService.findMasterData("A02"));
         searchForm1.setTaniList(masterService.findMasterData("A03"));
         
         model.addAttribute("searchForm1", searchForm1);
-		return "parts_list";
+
+        //共通(ガス栓・付帯工事)タブ
+        PartsListSearchForm searchForm2 = new PartsListSearchForm();
+        searchForm1.setBunruiList(masterService.findMasterData("A01"));
+        searchForm1.setKoukeiList(masterService.findMasterData("A02"));
+        searchForm1.setTaniList(masterService.findMasterData("B03"));
+        
+        model.addAttribute("searchForm2", searchForm2);
+        
+        return "parts_list";
 	}	
 	
 }

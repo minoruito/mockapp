@@ -1,6 +1,7 @@
 package my.company.mockapp.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -99,13 +100,28 @@ public class PartsListService {
 			if (m.getHimokuCodeName3().indexOf(tani) >= 0) {
 				taniFlag = true;
 			}
-			if (bunruiFlag || koukeiFlag || taniFlag) {
+			
+			if (bunrui.isEmpty() && koukei.isEmpty() && tani.isEmpty()) {
 				list.add(m);
+			} else {
+				if (bunruiFlag || koukeiFlag || taniFlag) {
+					list.add(m);
+				}
 			}
 		}
 		return list;
 		
 	}
 	
+	public List<AddedPartDto> getAddedPartList(String[] himokus){
+		List<AddedPartDto> list = new ArrayList<AddedPartDto>();
+		
+		for (AddedPartDto m : searchAddedPartData) {
+			if (Arrays.asList(himokus).contains(m.getHimokuCode())) {
+				list.add(m);
+			}
+		}
+		return list;
+	}
 
 }

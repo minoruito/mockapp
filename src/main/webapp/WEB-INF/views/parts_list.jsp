@@ -38,12 +38,12 @@
 	<div class="listContent">
 		<p>基本登録 項目一覧</p>
 		<div class="right">
-			<a id="seisan_code_select" href="#">清算コードを選択</a>
+			<a id="seisan_code_select" href="#">精算コードを選択</a>
 		</div>
 
 		<c:if test="${!empty form.basicPartList}" var="flg" />
 		<c:if test="${!flg}">
-			<div id="no_selected_data_message">清算費目は選択されていません</div>
+			<div id="no_selected_data_message" class="no_data_message">精算費目は選択されていません</div>
 			<table id="seisan_code_select_table" style="display: none;">
 				<tr class="header">
 					<th>費目コード</th>
@@ -77,10 +77,10 @@
 		</c:if>
 	</div>
 	<div class="listContent">
-		<p>追加 清算項目一覧</p>
+		<p>追加 精算項目一覧</p>
 		<c:if test="${!empty form.basicPartList}" var="flg" />
 		<c:if test="${!flg}">
-			<div id="no_added_data_message">清算費目は選択されていません</div>
+			<div id="no_added_data_message" class="no_data_message">精算費目は選択されていません</div>
 			<table id="seisan_code_add_table" style="display: none;">
 				<tr class="header">
 					<th>費目コード</th>
@@ -118,7 +118,7 @@
 			</table>
 		</c:if>
 		<div class="left">
-			<a id="seisan_code_add" href="#">清算コードを選択</a>
+			<a id="seisan_code_add" href="#">精算コードを選択</a>
 		</div>
 	</div>
 	<hr />
@@ -127,8 +127,8 @@
 			class="button">設計詳細登録</a>
 	</div>
 
-	<!-- 清算コード選択ポップアップ  -->
-	<div id="seisan_code_select_popup" title="清算コード選択">
+	<!-- 精算コード選択ポップアップ  -->
+	<div id="seisan_code_select_popup" title="精算コード選択">
 		<p>基本登録 (20A以下のFネジガス栓(UI/UL) 1箇所取付時)</p>
 		<div id="seisan_code_select_popup_tabs">
 			<ul>
@@ -231,9 +231,9 @@
 		</div>
 	</div>
 
-	<!-- 清算コード追加ポップアップ  -->
-	<div id="seisan_code_add_popup" title="清算コード追加">
-		<p>よく使う清算費目一覧</p>
+	<!-- 精算コード追加ポップアップ  -->
+	<div id="seisan_code_add_popup" title="精算コード追加">
+		<p>よく使う精算費目一覧</p>
 		<table>
 			<tr>
 				<th>費目追加</th>
@@ -251,12 +251,12 @@
 			</c:forEach>
 		</table>
 		<p>
-			追加項目が上記に無い場合<a id="seisan_code_search" href="#" class="button">清算費目追加</a>
+			追加項目が上記に無い場合<a id="seisan_code_search" href="#" class="button">精算費目追加</a>
 		</p>
 	</div>
 
-	<!-- 清算費目検索ポップアップ -->
-	<div id="seisan_code_search_popup" title="清算費目検索">
+	<!-- 精算費目検索ポップアップ -->
+	<div id="seisan_code_search_popup" title="精算費目検索">
 		<p>工事種別</p>
 		<div id="seisan_code_search_popup_tabs">
 			<ul>
@@ -273,7 +273,7 @@
 							<input type="text" autocomplete="on" list="searchForm1_bunrui" value="${searchForm1.bunrui}"/>
 							<datalist id="searchForm1_bunrui">
 								<c:forEach var="row" items="${searchForm1.bunruiList}" varStatus="status">
-                   				<option value="${row.value}" />
+				   				<option value="${row.value}" />
 								</c:forEach>
 							</datalist>
 						</li>
@@ -281,7 +281,7 @@
 							<input type="text" autocomplete="on" list="searchForm1_koukei" value="${searchForm1.koukei}"/>
 							<datalist id="searchForm1_koukei">
 								<c:forEach var="row" items="${searchForm1.koukeiList}" varStatus="status">
-                   				<option value="${row.value}" />
+				   				<option value="${row.value}" />
 								</c:forEach>
 							</datalist>
 						</li>
@@ -289,7 +289,7 @@
 							<input type="text" autocomplete="on" list="searchForm1_tani" value="${searchForm1.tani}"/>
 							<datalist id="searchForm1_tani">
 								<c:forEach var="row" items="${searchForm1.taniList}" varStatus="status">
-                   				<option value="${row.value}" />
+								<option value="${row.value}" />
 								</c:forEach>
 							</datalist>
 						</li>
@@ -307,7 +307,45 @@
 				</ul>
 			</div>
 			<div id="seisan_code_search_popup_tabs-2">
-				<p>共通(ガス栓・付帯工事</p>
+				<p>フィルタ条件</p>
+				<ul>
+				   <f:form modelAttribute="searchForm2" action="#" method="post" id="searchForm2">
+						<li>分類：
+							<input type="text" autocomplete="on" list="searchForm2_bunrui" value="${searchForm1.bunrui}"/>
+							<datalist id="searchForm2_bunrui">
+								<c:forEach var="row" items="${searchForm1.bunruiList}" varStatus="status">
+				   				<option value="${row.value}" />
+								</c:forEach>
+							</datalist>
+						</li>
+						<li>口径：
+							<input type="text" autocomplete="on" list="searchForm2_koukei" value="${searchForm2.koukei}"/>
+							<datalist id="searchForm2_koukei">
+								<c:forEach var="row" items="${searchForm2.koukeiList}" varStatus="status">
+				   				<option value="${row.value}" />
+								</c:forEach>
+							</datalist>
+						</li>
+						<li>単位：
+							<input type="text" autocomplete="on" list="searchForm2_tani" value="${searchForm2.tani}"/>
+							<datalist id="searchForm2_tani">
+								<c:forEach var="row" items="${searchForm1.taniList}" varStatus="status">
+								<option value="${row.value}" />
+								</c:forEach>
+							</datalist>
+						</li>
+						<input type="submit" value="検索"/>
+					</f:form>
+					<table id="seisan_code_search_popup_tabs-2_table" style="display:none;">
+						<tr class="header">
+							<th>選択</th>
+							<th>費目コード</th>
+							<th colspan="3">費目</th>
+							<th>費目名</th>
+							<th>単位</th>
+						</tr>
+					</table>
+				</ul>
 			</div>
 			<div id="seisan_code_search_popup_tabs-3">
 				<p>灯内軽工事(配管延長1.4mまで)</p>
