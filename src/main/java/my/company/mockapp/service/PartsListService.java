@@ -37,6 +37,21 @@ public class PartsListService {
             new AddedPartDto("C159", "内管", "設置", "3/4(20\')", "可とう管ガス栓(I,L) 15A", 1.0, "m"),
             new AddedPartDto("J222", "内管", "設置", "3/4(20\')", "ケースガス栓付属品(屋内用) 10A,15A", 1.0, "m"),
 	};
+	
+	private final AddedPartDto[] searchAddedPartData = {
+            new AddedPartDto("M201", "基本工事", "木、フレキ", "1栓", "増設・入替フレキ基本工事費 25A以下", 1.0, "式"),
+            new AddedPartDto("M202", "基本工事", "木、フレキ", "2栓以上", "2栓目以降増設入替フレキ基本工事費 25A以下", 1.0, "式"),
+            new AddedPartDto("M132", "基本工事", "木質ネジ", "贈位", "増設・入替フレキ基本工事費 32A以下", 1.0, "式"),
+            new AddedPartDto("M432", "基本工事", "木質ネジ", "撤去", "撤去ネジ基本工事費 32A以下", 1.0, "式"),
+            new AddedPartDto("S115", "内管", "新パイプ", "白SS管1/2(15)", "亜鉛メッキ鋼管(白SS管)15A", 1.0, "m"),
+            new AddedPartDto("S120", "内管", "新パイプ", "白SS管3/4(20)", "亜鉛メッキ鋼管(白SS管)20A", 1.0, "m"),
+            new AddedPartDto("S125", "内管", "新パイプ", "白SS管1(25)", "亜鉛メッキ鋼管(白SS管)25A", 1.0, "m"),
+            new AddedPartDto("S132", "内管", "新パイプ", "白SS管1 1/4(32)", "亜鉛メッキ鋼管(白SS管)32A", 1.0, "m"),
+            new AddedPartDto("K115", "内管", "新パイプ", "VL管1/2(15)", "塩化ビニール被覆鋼管(VL管)15A", 1.0, "m"),
+            new AddedPartDto("K120", "内管", "新パイプ", "VL管3/4(20)", "塩化ビニール被覆鋼管(VL管)15A", 1.0, "m"),
+            new AddedPartDto("K125", "内管", "新パイプ", "VL管1(25)", "塩化ビニール被覆鋼管(VL管)15A", 1.0, "m"),
+            new AddedPartDto("K132", "内管", "新パイプ", "VL管1 1/4(32)", "塩化ビニール被覆鋼管(VL管)15A", 1.0, "m"),
+	};	
 
 	public List<BasicPartDto> getBasicParts(){
 		List<BasicPartDto> list = new ArrayList<BasicPartDto>();
@@ -67,5 +82,30 @@ public class PartsListService {
 		}
 		return result;
 	}
+	
+	public List<AddedPartDto> searchAddedParts(String bunrui, String koukei, String tani){
+		List<AddedPartDto> list = new ArrayList<AddedPartDto>();
+		
+		for (AddedPartDto m : searchAddedPartData) {
+			boolean bunruiFlag = false;
+			boolean koukeiFlag = false;
+			boolean taniFlag = false;
+			if (m.getHimokuCodeName1().indexOf(bunrui) >= 0) {
+				bunruiFlag = true;
+			}
+			if (m.getHimokuCodeName2().indexOf(koukei) >= 0) {
+				koukeiFlag = true;
+			}
+			if (m.getHimokuCodeName3().indexOf(tani) >= 0) {
+				taniFlag = true;
+			}
+			if (bunruiFlag || koukeiFlag || taniFlag) {
+				list.add(m);
+			}
+		}
+		return list;
+		
+	}
+	
 
 }

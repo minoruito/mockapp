@@ -114,10 +114,15 @@ $(function() {
 		var koukei = $("#searchForm1_koukei").val();
 		var tani = $("#searchForm1_tani").val();
 		$.getJSON(	"get_add_part", {"bunrui" : bunrui, "koukei" : koukei, "tani" : tani}, function(data) {
+			// 行を消す
+			$("#seisan_code_search_popup_tabs-1_table").find("tr.data").each(function(i, elm) {
+				$(this).remove();
+			});
+
 			//取得した結果を表示する
-			$("#seisan_code_add_table").css("display", "");
-			$("#seisan_code_add_table").append(
-				'<tr class="data"><td>' + data["himokuCode"] + '</td><td>' + data["himokuCodeName1"] + '</td><td>' + data["himokuCodeName2"] + '</td><td>' + data["himokuCodeName3"] + '</td><td>' + data["himokuName"] + '</td><td>' + data["num"].toFixed(1) + '</td><td>' + data["tani"] + '</td><td><a class="remove-button" href="#">削除</a></td></tr>');
+			$("#seisan_code_search_popup_tabs-1_table").css("display", "");
+			$("#seisan_code_search_popup_tabs-1_table").append(
+				'<tr class="data"><td><input type="check" /></td><td>' + data["himokuCode"] + '</td><td>' + data["himokuCodeName1"] + '</td><td>' + data["himokuCodeName2"] + '</td><td>' + data["himokuCodeName3"] + '</td><td>' + data["himokuName"] + '</td><td>' + data["num"].toFixed(1) + '</td><td>' + data["tani"] + '</td><td><a class="remove-button" href="#">削除</a></td></tr>');
 		});
 		return false;
 	});

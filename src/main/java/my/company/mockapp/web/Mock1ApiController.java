@@ -42,11 +42,11 @@ public class Mock1ApiController {
     }
 
 	@RequestMapping(value = "/search_add_parts", method = RequestMethod.GET, produces="application/json")
-    public List<BasicPartDto> getBasicParts() {
-        logger.info("Start /get_basic_parts");
+    public List<AddedPartDto> searchAddParts(String bunrui, String koukei, String tani) {
+        logger.info("Start /search_add_parts");
         
-        List<BasicPartDto> basicPartsList = service.getBasicParts();
-        return basicPartsList;
+        List<AddedPartDto> addedPartsList = service.searchAddedParts(bunrui, koukei, tani);
+        return addedPartsList;
     }
 
 }

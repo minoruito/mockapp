@@ -317,6 +317,5 @@
 			</div>
 		</div>
 	</div>
-	<c:import url="parameters.jsp" />
 </body>
 </html>
