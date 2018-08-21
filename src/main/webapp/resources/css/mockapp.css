@@ -1,0 +1,72 @@
+ul li:first-child {
+  margin-right: 20px;
+}
+
+li {
+    display: inline;
+}
+
+span.guide {
+	font-size: smaller;
+}
+
+p.guide {
+    font-size: smaller;
+}
+
+table,td, th {
+    border-collapse: collapse;
+    border:1px solid #333;
+}
+
+table td {
+    font-size: smaller;
+}
+
+form input.error {
+	background-color: #FF999999;
+}
+
+form label.error {
+	margin-left: 20px;
+	color: red;
+    font-size: small;	
+}
+
+p:before {
+    content: "〇";
+}
+.right {
+	text-align: right;
+}
+.left {
+	text-align: left;
+}
+
+.listContent {
+	padding: 0 0 20px 0;
+}
+
+.buttonArea {
+	text-align: right;
+}
+
+a.button {
+	font-size: small;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #444;
+    background: #eeeeee;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #999999;
+	}
+	
+.buttonArea a:active {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.ui-dialog { font-size: small; }
