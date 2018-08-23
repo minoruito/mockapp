@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/parts_list/seisan_code_add_popup.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/parts_list/seisan_code_search_popup.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/parts_list/seisan_code_select_popup.jsp=UTF-8
 encoding//src/main/webapp/resources/css/mockapp.css=UTF-8
+encoding//src/main/webapp/resources/js/parts_list/seisan_code_add_popup.js=UTF-8

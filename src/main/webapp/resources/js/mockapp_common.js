@@ -1,6 +1,6 @@
-var Sampleapp = {};
+var Mockapp = {};
 //行毎のバリデーション追加関数
-Sampleapp.addValidate = function() {
+Mockapp.addValidate = function() {
     $(".required").each(function() {
         $(this).rules('add', {
             required : true,
@@ -12,6 +12,8 @@ Sampleapp.addValidate = function() {
 }
 
 $(function(){	
+	Mockapp.addValidate();
+
 	//日付ピッカーの日本語設定
     $.datepicker.regional['ja'] = {
         closeText: '閉じる',
@@ -45,5 +47,4 @@ $(function(){
     		$("#"+target +"_value").val("");
     	}
     });
-
 });

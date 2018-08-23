@@ -19,6 +19,7 @@ import my.company.mockapp.forms.PartsListSearchForm;
 import my.company.mockapp.service.MasterDataService;
 import my.company.mockapp.service.PartsListService;
 
+
 /**
  * Handles requests for the application home page.
  */
@@ -77,7 +78,7 @@ public class Mock1Controller {
         
         model.addAttribute("searchForm2", searchForm2);
         
-        return "parts_list";
+        return "parts_list/index";
 	}	
 	
 }
