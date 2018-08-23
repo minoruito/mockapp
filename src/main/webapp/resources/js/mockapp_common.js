@@ -47,4 +47,9 @@ $(function(){
     		$("#"+target +"_value").val("");
     	}
     });
+   
+   $('.spinner').spinner({
+	    max: 99,
+	    min: 0
+	  });
 });

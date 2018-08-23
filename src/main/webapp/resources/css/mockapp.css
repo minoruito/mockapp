@@ -70,3 +70,58 @@ a.button {
 }
 
 .ui-dialog { font-size: small; }
+
+.formContent  {
+	padding-bototm: 20px;
+}
+.formContent ul {
+	margin: 0 0 0 0;
+}
+.grid-1 {
+	width: 90px;
+	display: inline-block;
+}
+.grid-2 {
+	width: 180px;
+	display: inline-block;
+}
+.grid-3 {
+	width: 270px;
+	display: inline-block;
+}
+.grid-4 {
+	width: 360px;
+	display: inline-block;
+}
+.grid-5 {
+	width: 450px;
+	display: inline-block;
+}
+.grid-6 {
+	width: 540px;
+	display: inline-block;
+}
+.grid-7 {
+	width: 630px;
+	display: inline-block;
+}
+.grid-8 {
+	width: 720px;
+	display: inline-block;
+}
+.grid-9 {
+	width: 810px;
+	display: inline-block;
+}
+.grid-10 {
+	width: 900px;
+	display: inline-block;
+}
+.grid-11 {
+	width: 990px;
+	display: inline-block;
+}
+.grid-12 {
+	width: 1080px;
+	display: inline-block;
+}
