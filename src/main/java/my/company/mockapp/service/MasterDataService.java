@@ -37,7 +37,18 @@ public class MasterDataService {
 			new MasterDataDto("C03", "02", "個"), 
 			new MasterDataDto("C03", "03", "ｍ"),
 			new MasterDataDto("C03", "05", "式"),
-		};
+			
+			new MasterDataDto("Z01", "01", "課税(8%)"), 
+			new MasterDataDto("Z01", "02", "非課税"), 
+			new MasterDataDto("Z01", "03", "不課税"), 
+
+			new MasterDataDto("Z02", "01", "1桁端数処理"), 
+			new MasterDataDto("Z02", "02", "2桁端数処理"), 
+
+			new MasterDataDto("Z03", "01", "内税"), 
+			new MasterDataDto("Z03", "02", "外税"), 
+
+	};
 
 	public List<MasterDataDto> findMasterData(String masterDiv) {
 		List<MasterDataDto> list = new ArrayList<MasterDataDto>();
@@ -48,7 +59,6 @@ public class MasterDataService {
 			}
 		}
 		return list;
-
 	}
 
 	public MasterDataDto find(String masterDiv, String code) {

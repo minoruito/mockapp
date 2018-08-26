@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import my.company.mockapp.dto.AddedPartDto;
-import my.company.mockapp.dto.BasicPartDto;
-
 public class AmountReportForm {
 
 	//ヘッダー
@@ -14,13 +11,14 @@ public class AmountReportForm {
 	private String orderNo; //オーダー番号
 	
 	@Valid
-	private String gyoseiku; //行政区
+	private String gyoseiku; //行政区CD
 
 	@Valid
 	private String bukkenmei; //物件名
 
 	@Valid
-	private String choumei; //町丁名
+	private String choumei; //町丁名CD
+
 	@Valid
 	private String koujiShubetu; //工事種別
 	@Valid
@@ -30,18 +28,23 @@ public class AmountReportForm {
 	@Valid
 	private Boolean koujiChecks3; //増位・位置替工事
 	@Valid
-	private Boolean koujiChecks4; //撤去工事
+	private Boolean koujiChecks4; //撤去工事	
+
+	@Valid
+	private String tankaKubun; //単価区分
+	@Valid
+	private Boolean kyuuTankaKubunHyouji; //旧単価区分表示
 	
 	@Valid
-	private Boolean mYoryo;
+	private Boolean mYoryo; //M容量変更
 	@Valid
-	private String materOrderNo;
+	private String materOrderNo; //メーターオーダー番号
 	
 	//詳細情報
 	@Valid
-	private String flexDiv;
+	private String flexDiv; //フレキ区分
 	@Valid
-	private String flexLineNum;
+	private String flexLineNum; //フレキライン数
 	
 	@Valid
 	private String miwarifuriKokoNum;
@@ -49,58 +52,59 @@ public class AmountReportForm {
 	@Valid
 	private String note;
 	@Valid
-	private String naikanHaikanEnchoM;
+	private String naikanHaikanEnchoM; //内管配管長
 	@Valid
-	private String naikanTekkyoEnchoM;
-	
+	private String naikanTekkyoEnchoM; //内管撤去延長
+	@Valid
+	private String gasSenNum; //ガス栓数
+
+	//詳細情報リスト
 	@Valid
 	private List<AmountReportShosaiForm> toritsukeList;
 	@Valid
-	private List<AmountReportShosaiForm> TekkoList;
-	
-	@Valid
-	private String gasSenNum;
+	private List<AmountReportShosaiForm> tekkoList;
 	
 	//見積情報
 	@Valid
-	private Boolean mitsumoriKyuujituSitei;
+	private Boolean mitsumoriKyuujituSitei; //見積休日割増指定
 	@Valid
-	private String haikanDai1;
+	private String haikanDai1; //配管代Ⅰ
 	@Valid
-	private Boolean mitumoriShouUnpanSitei;
+	private Boolean mitumoriShouUnpanSitei; //見積小運搬割増指定
 	@Valid
-	private String gasSenDai;
+	private String gasSenDai; //ガス栓代
 	@Valid
-	private Boolean mitsumoriYakanSitei;
+	private Boolean mitsumoriYakanSitei; //見積夜間割増指定
 	@Valid
-	private String futaiKoujiDai;
+	private String futaiKoujiDai; //付帯工事代
 	@Valid
-	private String kazeiKubun;
+	private String kazeiKubun; //課税区分
 	@Valid
-	private String tokubetsuKoujiA;
+	private String tokubetsuKoujiA; //>特別工事代A
 	@Valid
-	private String hasuushoriKubun;
+	private String hasuushoriKubun; //端数処理区分
+
 	@Valid
-	private String tokubetsuKoujiB;
+	private String tokubetsuKoujiB; //特別工事代B
 	@Valid
-	private String hasuushoriKeitai;
+	private String hasuushoriKeitai; //端数処理形態
 	@Valid
-	private String rin;
+	private String rin; //臨
 	@Valid
-	private String kei;
+	private String kei; //計
 
 	//契約情報
 	@Valid
-	private String seikyuusaki1;
+	private String seikyuusaki1; //請求先
 	@Valid
 	private String seikyuusaki2;
 	@Valid
 	private String seikyuusakiMei;
 
 	@Valid
-	private String nyuukinKigenbi;
+	private String nyuukinKigenbi; //入金期限日
 	@Valid
-	private String hakkouKakuteibi;
+	private String hakkouKakuteibi; //発行確定日
 	public String getOrderNo() {
 		return orderNo;
 	}
@@ -155,6 +159,18 @@ public class AmountReportForm {
 	public void setKoujiChecks4(Boolean koujiChecks4) {
 		this.koujiChecks4 = koujiChecks4;
 	}
+	public String getTankaKubun() {
+		return tankaKubun;
+	}
+	public void setTankaKubun(String tankaKubun) {
+		this.tankaKubun = tankaKubun;
+	}
+	public Boolean getKyuuTankaKubunHyouji() {
+		return kyuuTankaKubunHyouji;
+	}
+	public void setKyuuTankaKubunHyouji(Boolean kyuuTankaKubunHyouji) {
+		this.kyuuTankaKubunHyouji = kyuuTankaKubunHyouji;
+	}
 	public Boolean getmYoryo() {
 		return mYoryo;
 	}
@@ -203,6 +219,12 @@ public class AmountReportForm {
 	public void setNaikanTekkyoEnchoM(String naikanTekkyoEnchoM) {
 		this.naikanTekkyoEnchoM = naikanTekkyoEnchoM;
 	}
+	public String getGasSenNum() {
+		return gasSenNum;
+	}
+	public void setGasSenNum(String gasSenNum) {
+		this.gasSenNum = gasSenNum;
+	}
 	public List<AmountReportShosaiForm> getToritsukeList() {
 		return toritsukeList;
 	}
@@ -210,16 +232,10 @@ public class AmountReportForm {
 		this.toritsukeList = toritsukeList;
 	}
 	public List<AmountReportShosaiForm> getTekkoList() {
-		return TekkoList;
+		return tekkoList;
 	}
 	public void setTekkoList(List<AmountReportShosaiForm> tekkoList) {
-		TekkoList = tekkoList;
-	}
-	public String getGasSenNum() {
-		return gasSenNum;
-	}
-	public void setGasSenNum(String gasSenNum) {
-		this.gasSenNum = gasSenNum;
+		this.tekkoList = tekkoList;
 	}
 	public Boolean getMitsumoriKyuujituSitei() {
 		return mitsumoriKyuujituSitei;

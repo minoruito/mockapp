@@ -24,9 +24,9 @@ import my.company.mockapp.service.PartsListService;
  * Handles requests for the application home page.
  */
 @Controller
-public class Mock1Controller {
+public class PartsListController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(Mock1Controller.class);
+	private static final Logger logger = LoggerFactory.getLogger(PartsListController.class);
 	
 
     @Autowired

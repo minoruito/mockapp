@@ -4,7 +4,7 @@ import javax.servlet.jsp.JspException;
 import org.springframework.web.servlet.tags.form.InputTag;
 import org.springframework.web.servlet.tags.form.TagWriter;
 
-public class CustomInputTag extends InputTag {
+public class ChoumeiDataInputTag extends InputTag {
 
 	private static final long serialVersionUID = 1L;
 
@@ -13,10 +13,10 @@ public class CustomInputTag extends InputTag {
 		String cls = this.getCssClass();
 		String originalName = this.getName();
 		if (cls == null) {
-			this.setCssClass("ajax");
+			this.setCssClass("choumeiAjax");
 		} else {
-			if (cls.indexOf("ajax") == 0) {
-				this.setCssClass(cls + " ajax");
+			if (cls.indexOf("choumeiAjax") < 0) {
+				this.setCssClass(cls + " choumeiAjax");
 			}
 		}
 		super.writeTagContent(tagWriter);

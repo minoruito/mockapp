@@ -123,8 +123,8 @@
 	</div>
 	<hr />
 	<div class="buttonArea">
-		<a href="mockapp" class="button">戻る</a> <a href="mockapp"
-			class="button">設計詳細登録</a>
+		<a href="amount_report" class="button">戻る</a>
+		<a href="amount_report" class="button">設計詳細登録</a>
 	</div>
 
 	<!-- 精算コード選択ポップアップ  -->

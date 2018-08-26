@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import my.company.mockapp.dto.AddedPartDto;
+import my.company.mockapp.dto.AmountReportDto;
 import my.company.mockapp.dto.BasicPartDto;
 import my.company.mockapp.service.PartsListService;
 
@@ -18,9 +19,9 @@ import my.company.mockapp.service.PartsListService;
  * Handles requests for the application home page.
  */
 @RestController
-public class Mock1ApiController {
+public class PartsListApiController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(Mock1ApiController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PartsListApiController.class);
 	
 
     @Autowired
@@ -61,6 +62,5 @@ public class Mock1ApiController {
         List<AddedPartDto> addedPartsList = service.searchAddedParts(bunrui, koukei, tani);
         return addedPartsList;
     }
-
 }
 

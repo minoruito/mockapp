@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import my.company.mockapp.dto.AddedPartDto;
+import my.company.mockapp.dto.AmountReportDto;
 import my.company.mockapp.dto.BasicPartDto;
 
 @Service
@@ -52,7 +53,7 @@ public class PartsListService {
             new AddedPartDto("K120", "内管", "新パイプ", "VL管3/4(20)", "塩化ビニール被覆鋼管(VL管)15A", 1.0, "m"),
             new AddedPartDto("K125", "内管", "新パイプ", "VL管1(25)", "塩化ビニール被覆鋼管(VL管)15A", 1.0, "m"),
             new AddedPartDto("K132", "内管", "新パイプ", "VL管1 1/4(32)", "塩化ビニール被覆鋼管(VL管)15A", 1.0, "m"),
-	};	
+	};
 
 	public List<BasicPartDto> getBasicParts(){
 		List<BasicPartDto> list = new ArrayList<BasicPartDto>();

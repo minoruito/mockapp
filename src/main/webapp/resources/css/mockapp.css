@@ -27,14 +27,24 @@ form input.error {
 	background-color: #FF999999;
 }
 
-form label.error {
-	margin-left: 20px;
-	color: red;
-    font-size: small;	
+form input[type='checkbox'].error {
+	outline: 2px solid #FF999999;
 }
 
 p:before {
     content: "〇";
+}
+
+.formContent p:before {
+    content: "<";
+}
+
+.formContent p:after {
+    content: ">";
+}
+
+span.required {
+	color: red;
 }
 .right {
 	text-align: right;
