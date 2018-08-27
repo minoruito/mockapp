@@ -18,6 +18,7 @@ public class PartsListForm {
 	@Valid
     private List<AddedPartDto> addedPartPopupList;
 
+
 	public List<BasicPartDto> getBasicPartList() {
 		return basicPartList;
 	}

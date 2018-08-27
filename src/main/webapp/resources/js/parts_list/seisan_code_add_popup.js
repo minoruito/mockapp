@@ -38,7 +38,13 @@ $(function() {
 			$("#seisan_code_select_table").css("display", "");
 			$.each(data, function(row, val) {
 				$("#seisan_code_select_table").append(
-					'<tr class="data"><td>' + val["himokuCode"] + '</td><td>' + val["himokuName"] + '</td><td><input type="text" value="' + val["num"].toFixed(1) + '" size="3" class="required" /></td><td>' + val["tani"] + '</td><td><a class="remove-button" href="#">削除</a></td></tr>');
+					'<tr class="data">' +
+					  '<td>' + val["himokuCode"] + '<input id="basicPartList' + row + '.num" name="basicPartList[' + row + '].himokuCode" type="hidden" value="' + val["himokuCode"] + '"/></td>' +
+					  '<td>' + val["himokuName"] + '<input id="basicPartList' + row + '.num" name="basicPartList[' + row + '].himokuName" type="hidden" value="' + val["himokuName"] + '"/></td>' +
+					  '<td><input id="basicPartList' + row + '.num" name="basicPartList[' + row + '].num" type="text" value="' + val["num"].toFixed(1) + '" size="3"/></td>' +
+					  '<td>' + val["tani"] + '<input id="basicPartList' + row + '.num" name="basicPartList[' + row + '].tani" type="hidden" value="' + val["tani"] + '"/></td>' +
+					  '<td><a class="remove-button" href="#">削除</a></td>'+
+					'</tr>');
 			});
 			Mockapp.addValidate();
 		});

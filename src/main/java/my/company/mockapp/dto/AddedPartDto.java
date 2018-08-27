@@ -12,6 +12,10 @@ public class AddedPartDto {
 	private double num;
 	private String tani;
 	
+	public AddedPartDto() {
+		
+	}
+	
 	public AddedPartDto(String himokuCode, String himokuCodeName1, String himokuCodeName2, String himokuCodeName3, String himokuName, double num, String tani) {
 		this.himokuCode = himokuCode;
 		this.himokuCodeName1 = himokuCodeName1;

@@ -38,4 +38,9 @@ $(function() {
 		$("#form").submit();		
 	});
 
+	//詳細見積情報確定ボタンクリック時処理
+	$("#submit_button").on("click", function() {
+		$("#form").prop("action", "/mockapp/amount_report/save");
+		$("#form").submit();		
+	});	
 });

@@ -9,6 +9,10 @@ public class BasicPartDto {
 	private double num;
 	private String tani;
 	
+	public BasicPartDto() {
+		
+	}
+	
 	public BasicPartDto(String himokuCode, String himokuName, double num, String tani) {
 		this.himokuCode = himokuCode;
 		this.himokuName = himokuName;
@@ -30,7 +34,7 @@ public class BasicPartDto {
 	public double getNum() {
 		return num;
 	}
-	public void setNum(Float num) {
+	public void setNum(double num) {
 		this.num = num;
 	}
 	public String getTani() {

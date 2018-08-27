@@ -47,8 +47,20 @@ $(function() {
 
 							$("#seisan_code_add_table").css("display", "");
 							$("#seisan_code_add_table").append(
-									'<tr class="data"><td>' + data[i].himokuCode + '</td><td>' + data[i].himokuCodeName1 + '</td><td>' + data[i].himokuCodeName2 + '</td><td>' + data[i].himokuCodeName3 + '</td><td>' + data[i].himokuName + '</td><td><input type="text" value="' + data[i].num.toFixed(1) + '" size="3" /></td><td>' + data[i].tani + '</td><td><a class="remove-button" href="#">削除</a></td></tr>');
+									'<tr class="data">' +
+										'<td>' + data[i].himokuCode + '<input class="himokuCode" id="addedPartList' + i + '.himokuCode" name="addedPartList[' + i + '].himokuCode" type="hidden" value="' + data[i].himokuCode + '" /></td>' +
+										'<td>' + data[i].himokuCodeName1 + '<input class="himokuCodeName1" id="addedPartList' + i + '.himokuCode" name="addedPartList[' + i + '].himokuCodeName1" type="hidden" value="' + data[i].himokuCodeName1 + '" /></td>' +
+										'<td>' + data[i].himokuCodeName2 + '<input class="himokuCodeName2" id="addedPartList' + i + '.himokuCode" name="addedPartList[' + i + '].himokuCodeName2" type="hidden" value="' + data[i].himokuCodeName2 + '" /></td>' +
+										'<td>' + data[i].himokuCodeName3 + '<input class="himokuCodeName3" id="addedPartList' + i + '.himokuCode" name="addedPartList[' + i + '].himokuCodeName3" type="hidden" value="' + data[i].himokuCodeName3 + '" /></td>' +
+										'<td>' + data[i].himokuName + '<input class="himokuName" id="addedPartList' + i + '.himokuCode" name="addedPartList[' + i + '].himokuName" type="hidden" value="' + data[i].himokuName + '" /></td>' +
+										'<td><input class="num" id="addedPartList' + i + '.num" name="addedPartList[' + i + '].num" type="text" value="' + data[i].num.toFixed(1) + '" size="3" /></td>' +
+										'<td>' + data[i].tani + '<input class="tani" id="addedPartList' + i + '.himokuCode" name="addedPartList[' + i + '].tani" type="hidden" value="' + data[i].tani + '" /></td>' +
+										'<td><a class="remove-button" href="#">削除</a></td>' +
+									'</tr>');
 						}
+						//IDを振り直す
+						Mockapp.renumberingSeisanCodeAddTable();
+						
 					})
 				}
 				$(this).dialog('close');

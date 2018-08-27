@@ -42,18 +42,18 @@ public class AmountReportController {
 	public String index(Model model) {
 		logger.info("start: amount_report");
 
-		AmountReportForm form = (AmountReportForm)session.getAttribute("form");
+		AmountReportForm form = (AmountReportForm)session.getAttribute("amountReportForm");
 		if (form == null) {
 			form = new AmountReportForm();
+	        //詳細情報の設定(設置リスト)
+	        form.setToritsukeList(new ArrayList<AmountReportShosaiForm>());
+	        form.setTekkoList(new ArrayList<AmountReportShosaiForm>());
+	        for (int i=0 ; i < 15 ; i++) {
+	        	form.getToritsukeList().add(new AmountReportShosaiForm(new Integer(0)));
+	        	form.getTekkoList().add(new AmountReportShosaiForm(new Integer(0)));
+	        }
 		}
 
-        //詳細情報の設定(設置リスト)
-        form.setToritsukeList(new ArrayList<AmountReportShosaiForm>());
-        form.setTekkoList(new ArrayList<AmountReportShosaiForm>());
-        for (int i=0 ; i < 15 ; i++) {
-        	form.getToritsukeList().add(new AmountReportShosaiForm(new Integer(0)));
-        	form.getTekkoList().add(new AmountReportShosaiForm(new Integer(0)));
-        }
         //プルダウンの設定
         model.addAttribute("kazeiKubunList", masterService.findMasterData("Z01"));
         model.addAttribute("hasuushoriKubunList", masterService.findMasterData("Z02"));
@@ -61,7 +61,7 @@ public class AmountReportController {
 
         model.addAttribute("form", form);
         
-        session.setAttribute("form", form);
+        session.setAttribute("amountReportForm", form);
 
         return "amount_report/index";
 	}
@@ -104,7 +104,7 @@ public class AmountReportController {
         model.addAttribute("hasuushoriKeitaiList", masterService.findMasterData("Z03"));
 
         model.addAttribute("form", form);
-        session.setAttribute("form", form);
+        session.setAttribute("amountReportForm", form);
 
         return "redirect:/parts_list";
 	}	

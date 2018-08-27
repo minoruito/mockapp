@@ -35,7 +35,7 @@
 <spring:url value="/resources/js/mockapp_common.js"
 	var="mockappCommonJs" />
 <script src="${mockappCommonJs}"></script>
-<spring:url value="/resources/js/amount_report.js" var="amountReportJs" />
+<spring:url value="/resources/js/amount_report/amount_report.js" var="amountReportJs" />
 <script src="${amountReportJs}"></script>
 
 <spring:url value="/resources/css/mockapp.css" var="mainCss" />
@@ -116,7 +116,7 @@
 			</li>
 			<li class="grid-2 right">フレキライン数<f:input path="flexLineNum" size="2" /></li>
 			<li class="grid-2">
-				<a href="#mockapp" class="button" id="parts_list_button">設計詳細登録</a>
+				<a href="#mockapp" class="button" id="parts_list_button">設計詳細編集</a>
 			</li>
 		</ul>
 		<table>
@@ -265,7 +265,7 @@
 			</li>
 			<li class="grid-2">発行確定日<f:input path="hakkouKakuteibi" size="10" class="calender"/></li>
 			<li class="grid-2"><a href="#mockapp" class="button" id="save_button">設計見積情報変更</a></li>
-			<li class="grid-2"><a href="#mockapp" class="button">設計見積情報確定</a></li>
+			<li class="grid-2"><a href="#mockapp" class="button" id="submit_button">設計見積情報確定</a></li>
 		</ul>
 	</div>
 	</f:form>

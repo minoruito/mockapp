@@ -5,11 +5,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,7 +23,6 @@ import my.company.mockapp.forms.PartsListSearchForm;
 import my.company.mockapp.service.MasterDataService;
 import my.company.mockapp.service.PartsListService;
 
-
 /**
  * Handles requests for the application home page.
  */
@@ -28,6 +31,8 @@ public class PartsListController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PartsListController.class);
 	
+	@Autowired
+	HttpSession session;
 
     @Autowired
     PartsListService service;
@@ -44,6 +49,9 @@ public class PartsListController {
 		
 		String formattedDate = dateFormat.format(date);
 		
+        session.setAttribute("amountReportForm", null);
+        session.setAttribute("partsListForm", null);
+
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
@@ -53,15 +61,19 @@ public class PartsListController {
 	public String parts_list(Model model) {
 		logger.info("start: parts_list");
 		
+		PartsListForm form = (PartsListForm)session.getAttribute("partsListForm");
+		if (form == null) {
+			form = new PartsListForm();
+		}
+
+		//追加清算項目一覧(ポップアップ）の設定
+		List<AddedPartDto> addedPartsPopupList = service.getAddedParts();
+		form.setAddedPartPopupList(addedPartsPopupList);
 		
-        PartsListForm form = new PartsListForm();
-        
-        //追加清算項目一覧の設定
-        List<AddedPartDto> addedPartsPopupList = service.getAddedParts();
-        form.setAddedPartPopupList(addedPartsPopupList);
-        
         model.addAttribute("form", form);
 
+        session.setAttribute("partsListForm", form);
+        
         //増設・位置替え・撤去工事タブ
         PartsListSearchForm searchForm1 = new PartsListSearchForm();
         searchForm1.setBunruiList(masterService.findMasterData("A01"));
@@ -80,5 +92,13 @@ public class PartsListController {
         
         return "parts_list/index";
 	}	
-	
+
+	@RequestMapping(value = "/parts_list/save", method = RequestMethod.POST)
+	public String save(@ModelAttribute PartsListForm form, Model model, BindingResult result) {
+		logger.info("start: /parts_list/save");
+		
+        session.setAttribute("partsListForm", form);
+		
+        return "redirect:/amount_report";
+	}	
 }

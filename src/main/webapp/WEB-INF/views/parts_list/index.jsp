@@ -35,6 +35,7 @@
 </head>
 <body>
 	<h1>数量選択</h1>
+	<f:form modelAttribute="form" action="#" method="post">
 	<div class="listContent">
 		<p>基本登録 項目一覧</p>
 		<div class="right">
@@ -63,14 +64,22 @@
 					<th>単位</th>
 					<th></th>
 				</tr>
-				<c:forEach var="row" items="${form.basicPartList}"
-					varStatus="status">
+				<c:forEach var="row" items="${form.basicPartList}" varStatus="status">
 					<tr class="data">
-						<td><c:out value="${row.himokuCode}" /></td>
-						<td><c:out value="${row.himokuName}" /></td>
-						<td><c:out value="${row.num}" /></td>
-						<td><c:out value="${row.tani}" /></td>
-						<td><a>削除</a></td>
+						<td>
+							<c:out value="${row.himokuCode}" />
+							<f:hidden path="basicPartList[${status.index}].himokuCode" />
+						</td>
+						<td>
+							<c:out value="${row.himokuName}" />
+							<f:hidden path="basicPartList[${status.index}].himokuName" />
+						</td>
+						<td><f:input path="basicPartList[${status.index}].num" size="3" /></td>
+						<td>
+							<c:out value="${row.tani}" />
+							<f:hidden path="basicPartList[${status.index}].tani" />
+						</td>
+						<td><a class="remove-button" href="#">削除</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -78,7 +87,7 @@
 	</div>
 	<div class="listContent">
 		<p>追加 精算項目一覧</p>
-		<c:if test="${!empty form.basicPartList}" var="flg" />
+		<c:if test="${!empty form.addedPartList}" var="flg" />
 		<c:if test="${!flg}">
 			<div id="no_added_data_message" class="no_data_message">精算費目は選択されていません</div>
 			<table id="seisan_code_add_table" style="display: none;">
@@ -102,17 +111,34 @@
 					<th>単位</th>
 					<th></th>
 				</tr>
-				<c:forEach var="row" items="${form.addedPartList}"
-					varStatus="status">
-					<tr class="">
-						<td><c:out value="${row.himokuCode}" /></td>
-						<td><c:out value="${row.himokuCodeName1}" /></td>
-						<td><c:out value="${row.himokuCodeName2}" /></td>
-						<td><c:out value="${row.himokuCodeName3}" /></td>
-						<td><c:out value="${row.himokuName}" /></td>
-						<td><input type="text" value='<c:out value="${row.num}"/>' size="2" /></td>
-						<td><c:out value="${row.tani}" /></td>
-						<td><a class="remove-button">削除</a></td>
+				<c:forEach var="row" items="${form.addedPartList}" varStatus="status">
+					<tr class="data">
+						<td>
+							<c:out value="${row.himokuCode}" />
+							<f:hidden path="addedPartList[${status.index}].himokuCode" class="himokuCode"/>
+						</td>
+						<td>
+							<c:out value="${row.himokuCodeName1}" />
+							<f:hidden path="addedPartList[${status.index}].himokuCodeName1" class="himokuCodeName1"/>
+						</td>
+						<td>
+							<c:out value="${row.himokuCodeName2}" />
+							<f:hidden path="addedPartList[${status.index}].himokuCodeName2" class="himokuCodeName2"/>
+						</td>
+						<td>
+							<c:out value="${row.himokuCodeName3}" />
+							<f:hidden path="addedPartList[${status.index}].himokuCodeName3" class="himokuCodeName3"/>
+						</td>
+						<td>
+							<c:out value="${row.himokuName}" />
+							<f:hidden path="addedPartList[${status.index}].himokuName" class="himokuName"/>
+						</td>
+						<td><f:input path="addedPartList[${status.index}].num" size="3" class="num"/></td>
+						<td>
+							<c:out value="${row.tani}" />
+							<f:hidden path="addedPartList[${status.index}].tani" class="tani"/>
+						</td>
+						<td><a class="remove-button" href="#">削除</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -124,9 +150,9 @@
 	<hr />
 	<div class="buttonArea">
 		<a href="amount_report" class="button">戻る</a>
-		<a href="amount_report" class="button">設計詳細登録</a>
+		<a href="#amount_report" class="button" id="save_button">設計詳細登録</a>
 	</div>
-
+	</f:form>
 	<!-- 精算コード選択ポップアップ  -->
 	<jsp:include page="seisan_code_select_popup.jsp" flush="false" />
 
